@@ -10,13 +10,13 @@ public class SSLServer {
         {
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
             String password = "abcdefg";
-            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("certificates/server/certificate-server.p12");
+            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("certificates/server/certificate-server.p12"); //replace with the path for server certificate
             keyStore.load(inputStream, password.toCharArray());
 
             String password2 = "aabbcc";
             KeyStore trustStore = KeyStore.getInstance("PKCS12");
             TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("PKIX", "SunJSSE");
-            InputStream inputStream1 = ClassLoader.getSystemClassLoader().getResourceAsStream("certificates/client/certificate-client.p12");
+            InputStream inputStream1 = ClassLoader.getSystemClassLoader().getResourceAsStream("certificates/client/certificate-client.p12"); //replace with the path for client certificate
             trustStore.load(inputStream1, password2.toCharArray());
             trustManagerFactory.init(trustStore);
             X509TrustManager x509TrustManager = null;
